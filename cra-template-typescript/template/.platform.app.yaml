@@ -1,0 +1,21 @@
+# This file describes your application.
+name: react-app # The name of this app. Must be unique within a project.
+
+type: nodejs:14 # The toolstack used to build the application.
+
+web:
+  locations:
+    '/':                # How should Platform.sh handle requests to the `/` URL path?
+      root: build       # The directory that contains your built assets after `npm build`
+      index: ["index.html"]    # When the `/` location is requested, which file should answer those request?
+      expires: 2m         # Set the default cache for all requests to 1 minute.
+      scripts: false      # Disable Python, PHP, and other scripts on server side
+      allow: true         # Allow all assets to be accessed via routes. Alternatively, set to false and use `rules:` to allow specific assets to be accessed
+      rules:
+        static\/*:
+          expires: 365d   # For react-generated assets that will self-cache-bust, set the cache for one year
+
+hooks:                    # Instruct Platform.sh on how to prepare your app for production
+  build: |
+    set -e
+    npm run build

@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/improper/platformsh-create-react-app.git",
-    "directory": "cra-template-typescript"
+    "directory": "cra-template-platformsh-typescript"
   },
   "license": "MIT",
   "engines": {
